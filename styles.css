@@ -2,7 +2,7 @@
 body{
     display: grid;
     grid-template-columns: 1fr 4fr;
-    grid-template-rows: 1fr 5fr;
+    grid-template-rows: 1fr minmax(auto, 82vh);
 }
 
 h1{
@@ -10,19 +10,60 @@ h1{
 }
 
 .sidebar{
-    border: 2px solid #000;
     grid-row: 1/3;
     display: grid;
-    grid-template-rows: minmax(auto, 100px) minmax(auto, 200px) 1fr;
-}
-
-.sidebar > *{
-    border: 1px solid #000;
+    grid-template-rows: min-content minmax(auto, 50vh) minmax(auto, 30vh);
+    background-color: rgb(0, 142, 251);
+    color: rgb(255, 255, 255);
 }
 
 .sidebar > .title{
+    padding: 30px;
     display: grid;
-    grid-template-columns: 1fr 1fr; 
+    grid-template-columns: 1fr 3fr;
+}
+
+.sidebar > .title > h1{
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    font-size: 2em;
+}
+
+.sidebar > .main-links, .sidebar > .misc-links{
+    padding: 30px;
+    display: grid;
+    grid-auto-rows: min-content;
+    gap: 10px;
+}
+
+
+.clickable-container{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 10px;
+    align-items: center;
+    
+}
+
+.clickable-container > a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 1.2em;
+}
+
+.clickable-container > img{
+    color: rgb(255, 140, 0);
+    width: 50px;
+    height: 50px; /* Ensures it has a visible size */
+    background-color: lightgray; /* Placeholder background */
+    display: inline-block; /* Keeps the block even if empty */
+}
+
+img{
+    border: 1px solid #000;
+    color: rgb(255, 140, 0);
+    width: 50px;
 }
 
 .header{
@@ -30,21 +71,49 @@ h1{
     display: grid;
     grid-template-columns: minmax(auto, 2fr) minmax(auto, 1fr);
     grid-template-rows: 1fr minmax(auto, 1fr);
-    gap: 10px;
-    padding: 20px;
 }
 
-.header > .info-container{
+.header > .search-container{
+    padding: 30px;
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: min-content 3fr;
+    gap: 10px;
+    align-items: center;
+}
+
+.header > .search-container > input{
+    padding: 10px;
+    border-radius: 30px;
+    background-color: rgb(199, 199, 199);
+    max-width: 500px;
+    border: none;
+}
+
+.header > .profile-container{
+    padding: 30px;
+    display: grid;
+    grid-template-columns: minmax(10px, 100px) min-content min-content minmax(min-content, auto);
+    gap: 10px;
+    align-items: center;
+}
+
+.profile-container > *:first-child {
+    grid-column: 2; 
+}
+
+
+.header > .info-container{
+    padding: 30px;
+    display: grid;
+    grid-template-columns: min-content 3fr;
     grid-template-rows: 1fr 1fr;
+    gap: 10px;
     
 }
 
 .header > .info-container > img{
     border: 1px solid #000;
     grid-row: 1/3;
-    place-self: center;
 }
 
 .header > .info-container > p{
@@ -57,25 +126,28 @@ h1{
     align-self: start;
 }
 
-.header > .profile-container{
-    display:grid;
-    grid-template-columns: 1fr 1fr 1fr;
+
+.header > *{
+    border: 1px solid #000;
 }
+
+
+
+/* .sidebar > *{
+    border: 1px solid #000;
+} */
+
 
 .header > .profile-container > img{
     border: 1px solid #000;
 }
 
-.header > .search-container{
-    place-self: center stretch;
-    padding-left: 25px;
-}
 
 .header > .buttons-container{
+    padding: 30px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
-    place-self: center stretch;
 }
 
 .header > .buttons-container > button{
@@ -87,10 +159,9 @@ h1{
 }
 .main-content{
     display: grid;
-    grid-template-columns: 4fr minmax(300px, 1fr);
-    grid-template-rows: auto auto;
+    grid-template-columns: minmax(100px, 4fr) minmax(300px, 1fr);
+    grid-template-rows: minmax(auto, 325px) minmax(auto, 350px);
     gap: 10px;
-    
 }
 
 .main-content > .project-container{
